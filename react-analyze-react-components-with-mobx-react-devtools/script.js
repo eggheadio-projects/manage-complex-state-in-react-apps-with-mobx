@@ -11,7 +11,7 @@ appState.increment = function() {
 }
 appState.decrement = function() {
   this.count--;
-  console.log('hoi')
+  console.log('hoi') || displayInPreview('hoi')
 }
 
 @observer class Counter extends Component {
@@ -39,3 +39,13 @@ ReactDOM.render(
   <Counter store={appState} />,
   document.getElementById("app")
 )
+
+
+
+// display in plunker preview
+function displayInPreview(string) {
+  var newDiv = document.createElement("div"); 
+  var newContent = document.createTextNode(string); 
+  newDiv.appendChild(newContent);
+  document.body.appendChild(newDiv)
+}

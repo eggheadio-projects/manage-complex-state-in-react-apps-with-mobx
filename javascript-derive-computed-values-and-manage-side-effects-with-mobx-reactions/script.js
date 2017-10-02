@@ -8,17 +8,17 @@ const t = new class Temperature {
   @observable temperatureCelsius = 25;
 
   @computed get temperatureKelvin() {
-    console.log("calculating Kelvin")
+    console.log("calculating Kelvin") || displayInPreview("calculating Kelvin");
     return this.temperatureCelsius * (9/5) + 32
   }
    
   @computed get temperatureFahrenheit() {
-    console.log("calculating Fahrenheit")
+    console.log("calculating Fahrenheit") || displayInPreview("calculating Fahrenheit");
     return this.temperatureCelsius + 273.15
   }
    
   @computed get temperature() {
-    console.log("calculating temperature")
+    console.log("calculating temperature") || displayInPreview("calculating temperature");
     switch(this.unit) {
       case "K": return this.temperatureKelvin + "ºK"
       case "F": return this.temperatureFahrenheit + "ºF"
@@ -40,9 +40,12 @@ ReactDOM.render(
 )
    
    
-   
-   
-   
-   
-   
-   
+
+
+// display in plunker preview
+function displayInPreview(string) {
+  var newDiv = document.createElement("div"); 
+  var newContent = document.createTextNode(string); 
+  newDiv.appendChild(newContent);
+  document.body.appendChild(newDiv)
+}

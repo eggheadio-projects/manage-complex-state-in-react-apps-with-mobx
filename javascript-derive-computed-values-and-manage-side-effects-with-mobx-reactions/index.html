@@ -1,8 +1,19 @@
-<!DOCTYPE HTML>
+<!doctype html>
+<meta charset="utf-8">
+<head>
+  <script src="//unpkg.com/systemjs/dist/system.js"></script>
+  <script src="typescript-config.js"></script>
+  <script src="app-config.js"></script>
+  <script src="mobx-bundle.js"></script> 
+</head>
 <body>
-<div id="app" />
-<script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/mobx-react-devtools@4.2.15/index.js"></script>
-<script src="script.js"></script>
+    <!-- App -->
+    <div id="app"></div>
+    
+    <!-- /App -->
+    
+    <script>
+        SystemJS.import('main.ts');
+    </script>
 </body>
+

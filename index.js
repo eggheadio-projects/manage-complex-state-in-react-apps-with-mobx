@@ -1,6 +1,7 @@
-const {observable} = mobx;
-const {observer} = mobxReact;
-const {Component} = React;
+import  { observable } from 'mobx';
+import  { observer } from 'mobx-react';
+import  React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 
 const appState = observable({
   count : 0

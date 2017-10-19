@@ -1,8 +1,35 @@
-<!DOCTYPE HTML>
+<!doctype html>
+<meta charset="utf-8">
+<script src="https://unpkg.com/systemjs@0.20.17/dist/system.src.js"></script>
+
 <body>
-<div id="app" />
-<script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
-</script>
-<script src="script.js"></script>
+  <div id="app"></div>
+  <script type="text/javascript" charset="utf-8">
+    console.clear()
+  </script>
+  <script>
+    SystemJS.config({
+      map: {
+        "plugin-babel": "https://unpkg.com/systemjs-plugin-babel@0.0.25/plugin-babel.js",
+        "systemjs-babel-build": "https://unpkg.com/systemjs-plugin-babel@0.0.25/systemjs-babel-browser.js",
+        "babel-preset-react": "https://rawgit.com/eggheadio/plnkr-bundles/master/babel-preset-react.js",
+        "babel-plugin-transform-decorators-legacy": "https://rawgit.com/eggheadio/plnkr-bundles/master/babel-plugin-transform-decorators-legacy.js",
+        "react": "https://unpkg.com/react@16.0.0/umd/react.development.js",
+        "react-dom": "https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js",
+        "mobx": "https://unpkg.com/mobx@3.3.1/lib/mobx.js",
+        "mobx-react": "https://unpkg.com/mobx-react@4.3.3/index.js"
+      },
+      transpiler: "plugin-babel",
+      meta: {
+        "*.js": {
+          esModule: true,
+          babelOptions: {
+            presets: ["babel-preset-react"],
+            plugins: ["babel-plugin-transform-decorators-legacy"]
+          }
+        }
+      }
+    })
+    SystemJS.import("index.js");
+  </script>
 </body>

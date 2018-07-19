@@ -1,14 +1,16 @@
-const {observable} = mobx;
-const {observer} = mobxReact;
-const {Component} = React;
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import { Component } from 'react';
+import React from "react";
+import ReactDOM from "react-dom";
 
 const appState = observable({
-  count : 0
+  count: 0
 })
-appState.increment = function() {
+appState.increment = function () {
   this.count++;
 }
-appState.decrement = function() {
+appState.decrement = function () {
   this.count--;
 }
 
@@ -16,7 +18,7 @@ appState.decrement = function() {
   render() {
     return (
       <div>
-        Counter: {this.props.store.count} <br/>
+        Counter {this.props.store.count} <br />
         <button onClick={this.handleInc}> + </button>
         <button onClick={this.handleDec}> - </button>
       </div>
@@ -26,13 +28,11 @@ appState.decrement = function() {
   handleInc = () => {
     this.props.store.increment()
   }
-  
+
   handleDec = () => {
     this.props.store.decrement()
   }
 }
 
-ReactDOM.render(
-  <Counter store={appState} />,
-  document.getElementById("app")
-)
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Counter store={appState} />, rootElement);

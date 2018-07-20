@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import DevTools from 'mobx-react-devtools';
 
 const t = new class Temperature {
+  // To change the unit and temperature, do that here instead of in the console.
   @observable unit = "C";
   @observable temperatureCelsius = 25;
 

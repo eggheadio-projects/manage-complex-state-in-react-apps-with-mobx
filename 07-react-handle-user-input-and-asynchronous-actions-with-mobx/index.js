@@ -1,4 +1,3 @@
-// noprotect
 const {observable, computed, action, transaction, useStrict, extendObservable, asMap} = mobx;
 const {observer, Provider} = mobxReact;
 const {Component} = React;

@@ -6,22 +6,22 @@ import ReactDOM from "react-dom";
 import DevTools from 'mobx-react-devtools';
 
 const t = new class Temperature {
-  // Change this unit instead of changing the unit in the console.
+  // To change the unit and temperature, do that here instead of in the console.
   @observable unit = "C";
   @observable temperatureCelsius = 25;
 
   @computed get temperatureKelvin() {
-    console.log("calculating Kelvin");
+    console.log("calculating Kelvin")
     return this.temperatureCelsius * (9 / 5) + 32
   }
 
   @computed get temperatureFahrenheit() {
-    console.log("calculating Fahrenheit");
+    console.log("calculating Fahrenheit")
     return this.temperatureCelsius + 273.15
   }
 
   @computed get temperature() {
-    console.log("calculating temperature");
+    console.log("calculating temperature")
     switch (this.unit) {
       case "K": return this.temperatureKelvin + "ºK"
       case "F": return this.temperatureFahrenheit + "ºF"
@@ -36,6 +36,7 @@ const App = observer(({ temperature }) => (
     <DevTools />
   </div>
 ))
+
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App temperature={t} />, rootElement);

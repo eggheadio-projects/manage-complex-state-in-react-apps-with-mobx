@@ -10,7 +10,7 @@ import {
   when,
   autorun
 } from "mobx";
-import { observer, Provider } from "mobx-react";
+import { observer, Provider, inject } from "mobx-react";
 import { Component } from "react";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -95,15 +95,16 @@ class Temperature {
   }
 }
 
-const App = observer(["temperatures"], ({ temperatures }) => (
+const App = inject("temperatures")(observer(({ temperatures }) => (
   <ul>
     <TemperatureInput />
     {temperatures.map(t => <TView key={t.id} temperature={t} />)}
     <DevTools />
   </ul>
-));
+)));
 
-@observer(["temperatures"])
+@inject(["temperatures"])
+@observer
 class TemperatureInput extends React.Component {
   @observable input = "";
 

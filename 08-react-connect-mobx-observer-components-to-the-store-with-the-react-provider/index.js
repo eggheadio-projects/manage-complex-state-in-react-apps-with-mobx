@@ -10,12 +10,11 @@ import {
   when,
   autorun
 } from "mobx";
-import { observer } from "mobx-react";
+import { observer, Provider } from "mobx-react";
 import { Component } from "react";
 import React from "react";
 import ReactDOM from "react-dom";
 import DevTools from "mobx-react-devtools";
-import { Provider } from "react-redux";
 
 const APPID = "6c9bb64443d124019b41ea00de26732e";
 

@@ -1,4 +1,4 @@
-import { observable, computed, action, transaction } from 'mobx';
+import { observable, computed, action, transaction, asMap } from 'mobx';
 import { observer } from 'mobx-react';
 import { Component } from 'react';
 import React from "react";
@@ -43,10 +43,10 @@ const t = new class Temperature {
   }
 }
 
-const temps = observable.map({
+const temps = observable(asMap({
   "Amserdam": new Temperature(),
   "Rome": new Temperature()
-})
+}));
 
 const App = observer(({ temperature }) => (
   <div>

@@ -37,6 +37,9 @@ class Temperature {
           this.temperatureCelsius = json.main.temp - 273.15
           this.loading = false
         })))
+      .catch(function (error) {
+        console.log("This city is not in this api, try again.")
+      });
   }
 
   @computed get temperatureKelvin() {

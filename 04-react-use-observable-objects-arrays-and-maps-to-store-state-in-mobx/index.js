@@ -1,11 +1,17 @@
-import { observable, computed, action, transaction, asMap } from 'mobx';
+import {
+  observable,
+  computed,
+  action,
+  transaction,
+  asMap
+} from 'mobx';
 import { observer } from 'mobx-react';
 import { Component } from 'react';
 import React from "react";
 import ReactDOM from "react-dom";
 import DevTools from 'mobx-react-devtools';
 
-const t = new class Temperature {
+class Temperature {
   @observable unit = "C";
   @observable temperatureCelsius = 25;
 
@@ -43,20 +49,22 @@ const t = new class Temperature {
   }
 }
 
+console.log(Temperature);
+
 const temps = observable(asMap({
-  "Amserdam": new Temperature(),
+  "Amsterdam": new Temperature(),
   "Rome": new Temperature()
 }));
 
 const App = observer(({ temperature }) => (
   <div>
-    {temperature.entries().map(([city, t]) => (
+    {temperature.map(([city, t]) =>
       <div key={t.id}>{city}: {t.temperature}</div>
-    ))}
+    )}
     <DevTools />
   </div>
 ))
 
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App temperature={t} />, rootElement);
+ReactDOM.render(<App temperature={temps} />, rootElement);

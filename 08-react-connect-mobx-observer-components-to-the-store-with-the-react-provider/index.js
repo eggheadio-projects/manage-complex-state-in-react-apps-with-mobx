@@ -45,7 +45,9 @@ class Temperature {
             this.loading = false;
           })
         )
-      );
+    ).catch(function (error) {
+      console.log("This city is not in this api, try again.")
+    });
   }
 
   @computed

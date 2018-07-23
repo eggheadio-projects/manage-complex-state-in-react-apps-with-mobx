@@ -95,15 +95,15 @@ class Temperature {
   }
 }
 
-const App = observer(["temperatures"], ({ temperatures }) => (
+const App = inject("temperatures")(observer(({ temperatures }) => (
   <ul>
     <TemperatureInput />
     {temperatures.map(t => <TView key={t.id} temperature={t} />)}
     <DevTools />
   </ul>
-));
+)));
 
-@inject(["temperatures"])
+@inject("temperatures")
 @observer
 class TemperatureInput extends React.Component {
   @observable input = "";

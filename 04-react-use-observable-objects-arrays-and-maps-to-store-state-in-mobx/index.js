@@ -49,18 +49,25 @@ class Temperature {
   }
 }
 
-console.log(Temperature);
-
-const temps = observable(asMap({
+/* 
+  asMap deprecated, use observable.map instead
+  https://github.com/mobxjs/mobx-utils/issues/35 
+*/
+const temps = observable.map({
   "Amsterdam": new Temperature(),
   "Rome": new Temperature()
-}));
+});
+
 
 const App = observer(({ temperature }) => (
   <div>
-    {temperature.map(([city, t]) =>
-      <div key={t.id}>{city}: {t.temperature}</div>
-    )}
+    {
+      /*
+        keys and values now return iterators, to return an array, use Array.from with the iterator
+        https://github.com/mobxjs/mobx/issues/1488
+      */
+      Array.from(temperature.keys(), city => <div key={city}>{city}: {temperature.get(city).temperature}</div>)
+    }
     <DevTools />
   </div>
 ))

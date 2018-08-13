@@ -40,4 +40,4 @@ const App = observer(({ temperature }) => (
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App temperature={t} />, rootElement);
 
-global.t = t; /* you can now use `t.unit = "K"` etc in the sandbox console
+global.t = t; /* you can now use `t.unit = "K"` etc in the sandbox console */

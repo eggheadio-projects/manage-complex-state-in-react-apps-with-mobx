@@ -1,14 +1,10 @@
 import {
   observable,
   computed,
-  action,
-  transaction,
-  useStrict,
-  extendObservable,
-  asMap
+  action
 } from "mobx";
 import { observer } from "mobx-react";
-import React, { Component } from "react";
+import React from "react";
 import DevTools from "mobx-react-devtools";
 import ReactDOM from "react-dom";
 
@@ -95,3 +91,5 @@ class TView extends React.Component {
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App temperatures={temps} />, rootElement);
+
+global.temps = temps /* expose `temps` to the console */

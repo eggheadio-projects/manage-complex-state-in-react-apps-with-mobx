@@ -1,6 +1,5 @@
 import { observable, computed } from 'mobx';
 import { observer } from 'mobx-react';
-import { Component } from 'react';
 import React from "react";
 import ReactDOM from "react-dom";
 import DevTools from 'mobx-react-devtools';
@@ -41,3 +40,4 @@ const App = observer(({ temperature }) => (
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App temperature={t} />, rootElement);
 
+global.t = t; /* you can now use `t.unit = "K"` etc in the sandbox console

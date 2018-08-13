@@ -1,12 +1,9 @@
 import {
   observable,
   computed,
-  action,
-  transaction,
-  asMap
+  action
 } from 'mobx';
 import { observer } from 'mobx-react';
-import { Component } from 'react';
 import React from "react";
 import ReactDOM from "react-dom";
 import DevTools from 'mobx-react-devtools';
@@ -49,9 +46,9 @@ class Temperature {
   }
 }
 
-/* 
+/*
   asMap deprecated, use observable.map instead
-  https://github.com/mobxjs/mobx-utils/issues/35 
+  https://github.com/mobxjs/mobx-utils/issues/35
 */
 const temps = observable.map({
   "Amsterdam": new Temperature(),
@@ -66,7 +63,7 @@ const App = observer(({ temperature }) => (
         keys and values now return iterators, to return an array, use Array.from with the iterator
         https://github.com/mobxjs/mobx/issues/1488
       */
-      Array.from(temperature.keys(), city => <div key={city}>{city}: {temperature.get(city).temperature}</div>)
+      Array.from(temperature.keys()).map(city => <div key={city}>{city}: {temperature.get(city).temperature}</div>)
     }
     <DevTools />
   </div>
@@ -75,3 +72,5 @@ const App = observer(({ temperature }) => (
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App temperature={temps} />, rootElement);
+
+global.temps = temps /* expose `temps` to the console */

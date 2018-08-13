@@ -1,9 +1,13 @@
-import { observable, computed, action, transaction } from 'mobx';
+import { observable, computed, action, configure } from 'mobx';
 import { observer } from 'mobx-react';
-import { Component } from 'react';
 import React from "react";
 import ReactDOM from "react-dom";
 import DevTools from 'mobx-react-devtools';
+
+/* useStrict has been replaced by configure */
+configure({
+  enforceActions: "strict"
+})
 
 const t = new class Temperature {
   // To change the unit and temperature, do that here instead of in the console.
@@ -55,3 +59,4 @@ const App = observer(({ temperature }) => (
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App temperature={t} />, rootElement);
 
+global.t = t /* expose `t` to the console */

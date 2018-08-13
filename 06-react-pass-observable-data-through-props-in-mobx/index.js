@@ -93,3 +93,4 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App temperatures={temps} />, rootElement);
 
 global.temps = temps /* expose `temps` to the console */
+global.Temperature = Temperature /* expose `Temperature` to the console */

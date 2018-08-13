@@ -107,3 +107,4 @@ autorun(() => {
 })
 
 global.temps = temps /* expose `temps` to the console */
+global.Temperature = Temperature /* expose `Temperature` to the console */
